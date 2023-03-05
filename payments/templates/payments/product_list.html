@@ -1,0 +1,32 @@
+{% extends 'payments/base.html' %}
+
+{% block content %}
+<h1 class="text-center">Product List</h1>
+<div class="container">
+    {% if product_list %}
+    <div class="row">
+
+
+        {% for p in product_list %}
+        <div class="col-sm-4">
+            <div class="card">
+                <img class="card-img-top" src="https://dummyimage.com/200x150.jpg?text={{ p.name }}" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">{{ p.name }}</h4>
+                    <p class="card-text">{{ p.description }}</p>
+                </div>
+                <div class="card-footer d-flex">
+                    <a href="{% url 'detail' id=p.id %}" class="btn btn-success ml-auto">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center mt-5">
+        The product list is empty. Please add some products first.
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

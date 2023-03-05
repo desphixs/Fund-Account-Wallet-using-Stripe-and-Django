@@ -1,0 +1,13 @@
+{% extends 'payments/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron text-center mt-5">
+        <h1 class="text-success">Payment Success</h1>
+        <p>Your account have been funded with ${{order.amount}}. You can now close this window or use the
+            link below to visit 
+            <a href="/">home page</a>.
+        </p>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'payments/base.html' %}
+
+{% block content %}
+    <h1 class="text-center">Deposit History</h1>
+    <div class="container">
+        
+        {% if object_list %}
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Customer Email</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for i in object_list %}
+                    <tr>
+                        <td>{{ i.customer_email }}</td>
+                        <td>{{ i.amount }}</td>
+                        <td>
+                            {% if i.has_paid %}
+                                <b class="text-success">Success</b>
+                            {% else %}
+                                <b class="text-danger">Failed</b>
+                            {% endif %}
+                        </td>
+                        <td>{{ i.created_on }}</td>
+                    </tr>
+                {% endfor %}
+                    
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-info">
+            Payment history is empty.
+        </div>
+        {% endif %}
+            
+    </div>
+{% endblock content %}
+    

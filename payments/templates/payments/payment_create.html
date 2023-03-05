@@ -1,0 +1,24 @@
+{% extends 'payments/base.html' %}
+
+{% block content %}
+<h1 class="text-center">Enter Amount to Deposit</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="number" name="amount" placeholder="Enter Amount" id="amount" class="form-control">
+                <br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Continue</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.querySelectorAll('input, textarea').forEach(e => {
+        e.classList.add('form-control');
+    })
+</script>
+{% endblock content %}
